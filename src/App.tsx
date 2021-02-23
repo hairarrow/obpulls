@@ -1,7 +1,8 @@
 import "./App.css";
+import { GithubPullsChart } from "./components/GithubPullsChart";
 
 function App() {
-  return <h1>Hello</h1>;
+  return <GithubPullsChart />;
 }
 
 export default App;
