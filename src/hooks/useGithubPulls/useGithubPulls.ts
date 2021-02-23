@@ -66,7 +66,7 @@ export function useGithubPulls(
     }
 
     if (!loaded) run();
-  }, [page, loaded]);
+  }, [page, loaded, perPage, repo, state]);
 
   if (Number(perPage) > 100) {
     throw new Error("useGithubPulls: Maximum number of items per page is 100");
