@@ -9,10 +9,13 @@ import {
   Bar,
   CartesianGrid
 } from "recharts";
+import { Formatter } from "recharts/types/component/DefaultLegendContent";
+import { Props as ResponsiveContainerProps } from "recharts/types/component/ResponsiveContainer";
 
 import { serializePulls } from "./serializePulls";
 import { useGithubPulls } from "../../hooks/useGithubPulls";
-import { Formatter } from "recharts/types/component/DefaultLegendContent";
+
+interface Props extends Pick<ResponsiveContainerProps, "width" | "height"> {}
 
 const renderLegendText: Formatter = (value) =>
   value !== "gap" && (
@@ -21,12 +24,17 @@ const renderLegendText: Formatter = (value) =>
     </span>
   );
 
-export const GithubPullsChart: FC = () => {
+export const GithubPullsChart: FC<Props> = ({ width, height }) => {
   const { pulls } = useGithubPulls();
   const data = useMemo(() => serializePulls(pulls), [pulls]);
 
   return (
-    <ResponsiveContainer width="100%" minHeight={500}>
+    <ResponsiveContainer
+      width={width || "100%"}
+      height={height || "100%"}
+      minHeight={500}
+      minWidth={120}
+    >
       <BarChart data={data} margin={{ top: 8, bottom: 8 }}>
         <CartesianGrid stroke="#cecece" vertical={false} />
         <Legend
