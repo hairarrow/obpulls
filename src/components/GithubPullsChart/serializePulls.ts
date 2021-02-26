@@ -39,7 +39,8 @@ export function serializePulls(pulls: Pull[]) {
     return {
       date,
       opened,
-      closed
+      closed,
+      gap: 1
     };
   });
 }
