@@ -27,7 +27,7 @@ export function reducer(state = defaultState, action: Action): State {
       return { ...state, loading: false, loaded: true };
     }
     case Actions.Load: {
-      return { ...state, pulls: action.value };
+      return { ...state, pulls: [...state.pulls, ...action.value] };
     }
     default:
       throw new Error(`Unknown action type`);
