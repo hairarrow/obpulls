@@ -48,7 +48,7 @@ export function useGithubPulls(
       try {
         dispatch({ type: Actions.Start });
         const fetchPulls = await fetch(
-          `${GITHUB_API}/repos/${repo}/pulls?state=${state}&page${page}&per_page=${perPage}`
+          `${GITHUB_API}/repos/${repo}/pulls?state=${state}&page=${page}&per_page=${perPage}`
         );
         const link = parseLinkHeader(fetchPulls.headers.get("link") as string);
         const pulls = await fetchPulls.json();
