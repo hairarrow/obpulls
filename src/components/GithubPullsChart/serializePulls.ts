@@ -40,7 +40,7 @@ export function serializePulls(pulls: Pull[]) {
       date,
       opened,
       closed,
-      gap: 1
+      gap: 0.5
     };
   });
 }
